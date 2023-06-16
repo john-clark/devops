@@ -5,8 +5,8 @@ $IsElevated = ([Security.Principal.WindowsPrincipal] [Security.Principal.Windows
 if (-not($IsElevated)) {
     Write-Output "Not elevated doing user install"
 
-    #if git installed assume we don't need prereqs. To test: choco uninstall git
-    $testgit = Get-Command "git" -ErrorAction SilentlyContinue
+    #if vagrant installed assume we don't need prereqs. To test: choco uninstall vagrant
+    $testgit = Get-Command "vagrant" -ErrorAction SilentlyContinue
     if($testgit) {
         Write-Output "Found git, assuming prerequisites are installed"
         vagrant up
@@ -18,7 +18,7 @@ if (-not($IsElevated)) {
 	.\local-sites.ps1 add
         Exit
     } else {
-        Write-Output "No git found, rerunning as elevated"
+        Write-Output "No vagrant found, rerunning as elevated"
 
 		if ([int](Get-CimInstance -Class Win32_OperatingSystem | Select-Object -ExpandProperty BuildNumber) -ge 6000) {
 		  $CommandLine = "-File `"" + $MyInvocation.MyCommand.Path + "`" " + $MyInvocation.UnboundArguments
