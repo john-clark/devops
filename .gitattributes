@@ -1,0 +1,23 @@
+# Fix line endings that are edited on windows
+*.txt -lf
+*.sh -lf
+*.env -lf
+*.git* -lf
+
+# These files are text and should be normalized (Convert crlf => lf)
+*.css           text
+*.html          text
+*.java          text
+*.js            text
+*.json          text
+*.properties    text
+*.xml           text
+*.ps1		    text
+
+# These files are binary and should be left untouched
+# (binary is macro for -text -diff)
+*.class         binary
+*.jar           binary
+*.gif           binary
+*.jpg           binary
+*.png           binary
