@@ -10,8 +10,9 @@
 
 ## How to use this?
 
-1. Developers local .ssh setup with key in GitHub.
-2. Clone this repository
+1. Developers local .ssh setup with key in GitHub. 
+    > *TODO* mirror ssh key to vm
+2. Clone this repository or download/extract this repo
 3. Run the ``install.ps1`` to setup 
    * workstation prerequisites
    * vagrant vm prerequisites 
@@ -24,10 +25,5 @@
      * https://ubuntu.lan/adminer/mysql
    * https://symfony.ubuntu.lan
    * https://drupal.ubuntu.lan
+    > *TODO* Setup shared folders for workstation gui webdev (phpstorm/vscode)
 5. To start over type ``uninstall.ps1`` to remove the vm and the local root certificates.
-
-
----
-
-### TODO: 
-* Setup shared folders for workstation gui webdev (phpstorm/vscode)
