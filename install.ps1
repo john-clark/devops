@@ -8,7 +8,7 @@ if (-not($IsElevated)) {
     #if vagrant installed assume we don't need prereqs. To test: choco uninstall vagrant
     $testgit = Get-Command "vagrant" -ErrorAction SilentlyContinue
     if($testgit) {
-        Write-Output "Found git, assuming prerequisites are installed"
+        Write-Output "Found vagrant, assuming prerequisites are installed"
         vagrant up
 	.\local-certificates.ps1 add
         Write-Output "Install Complete"
