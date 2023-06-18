@@ -68,7 +68,7 @@ L=Ames
 O=Development
 OU=Local
 CN=$DOMAIN
-emailAddress=skyman@iastate.edu
+emailAddress=root@localhost
 "
 #by default clobber
 echo ">>> Installing $DOMAIN self-signed SSL"
@@ -108,7 +108,7 @@ echo ">>> Creating phpinfo"
 echo "<?php phpinfo();" >/var/www/html/phpinfo.php
 
 echo ">>> Configuring server-info"
-sed -i "s/Require/#Require/g" /etc/apache2/mods-enabled/info.conf
+sed -i "s/Require/#Require/g" /etc/apache2/mods-available/info.conf
 a2enmod info.load
 
 echo ">>> Restarting Webserver"
