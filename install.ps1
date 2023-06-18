@@ -10,12 +10,12 @@ if (-not($IsElevated)) {
     if($testgit) {
         Write-Output "Found git, assuming prerequisites are installed"
         vagrant up
-	.\local-certificates.ps1 add
+	#.\local-certificates.ps1 add
         Write-Output "Install Complete"
-        Write-Output " start firefox https://ubuntu.lan/"
+    #    Write-Output " start firefox https://ubuntu.lan/"
 	Write-Output ""
-	Write-Output "Installing Sub Sites"
-	.\local-sites.ps1 add
+	#Write-Output "Installing Sub Sites"
+	#.\local-sites.ps1 add
         Exit
     } else {
         Write-Output "No vagrant found, rerunning as elevated"
