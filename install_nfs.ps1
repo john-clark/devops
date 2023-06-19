@@ -14,7 +14,7 @@ if (-not($IsElevated)) {
         Exit
       } else {
         # now map w to nfs
-        New-PSDrive W -PSProvider FileSystem -Root \\172.16.0.10\srv\nfs -Persist
+        New-PSDrive W -PSProvider FileSystem -Root \\172.16.0.10\var\www -Persist
         Write-Host "Completed Install"
       }             
    }
@@ -26,8 +26,8 @@ if (-not($IsElevated)) {
         Write-Output "Elevated install starting"
         Enable-WindowsOptionalFeature -FeatureName ServicesForNFS-ClientOnly, ClientForNFS-Infrastructure -Online -NoRestart
         #set nfs to use id 33 which matches www-data on the vm
-        New-ItemProperty HKLM:SOFTWAREMicrosoftClientForNFSCurrentVersionDefault -Name AnonymousUID -Value 33 -PropertyType "DWord"
-        New-ItemProperty HKLM:SOFTWAREMicrosoftClientForNFSCurrentVersionDefault -Name AnonymousGID -Value 33 -PropertyType "DWord"
+        New-ItemProperty HKLM:\SOFTWARE\Microsoft\ClientForNFS\CurrentVersion\Default -Name AnonymousUID -Value 33 -PropertyType "DWord"
+        New-ItemProperty HKLM:\SOFTWARE\Microsoft\ClientForNFS\CurrentVersion\Default -Name AnonymousGID -Value 33 -PropertyType "DWord"
         #restart nfs
         net stop nfsclnt
         net stop nfsrdr
