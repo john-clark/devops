@@ -6,17 +6,19 @@ if [[ "$EUID" -ne 0 ]]; then
 	exit 1
 fi
 
-echo ">>> Setting Timezone & Locale"
-timedatectl set-timezone America/Chicago
-#localectl set-local LANG=
+#echo ">>> Setting Timezone & Locale"
+cp /etc/localtime /root/oem.timezone
+rm /etc/localtime
+ln -s /usr/share/zoneinfo/America/Chicago /etc/localtime
 
-echo ">>> Updating System"
-yum -y update > /dev/null
+echo ">>> Setting up Reopos"
+yum install -y https://rpms.remirepo.net/enterprise/remi-release-6.rpm
+#yum-config-manager --enable remi-php71
 
-echo ">>> Installing Packages"
-yum -y install </vagrant/install/centos7_packages.txt | grep -P "\d\K upgraded"
+#echo ">>> Updating System"
+yum update -y
 
-echo ">>> Installing Mail System"
+#echo ">>> Installing Packages"
+yum install -y $(cat /vagrant/install/packages.txt)
 
-#apt-get -y install software-properties-common | grep -P "\d\K upgraded"
-yum -y upgrade | grep -P "\d\K upgraded"
+echo ">>> Complete CentOS Configuration"
