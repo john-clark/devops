@@ -8,20 +8,12 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder ".", "/vagrant"
 
   config.vm.hostname = 'centos'
-
-  config.vm.network 'private_network', 
-    ip: '172.16.0.9', 
-    auto_config: false
-
-#  config.vm.network "public_network"
+  config.vm.network 'private_network', ip: '172.16.0.9' 
 
   config.vm.provider "virtualbox" do |vb|
     # vb.gui = true
     vb.memory = "8192"
     vb.cpus = "8"
-    #vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-    #vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
-
   end
 
   config.ssh.forward_agent = true
