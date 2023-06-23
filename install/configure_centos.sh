@@ -16,7 +16,7 @@ yum install -y https://rpms.remirepo.net/enterprise/remi-release-6.rpm
 #yum-config-manager --enable remi-php71
 
 #echo ">>> Updating System"
-yum update -y
+yum update -y >/dev/nul 2>&1
 
 #echo ">>> Installing Packages"
 yum install -y $(cat /vagrant/install/packages.txt)
